@@ -9,10 +9,10 @@ export class BasicPerceptron {
         this.offset = Math.random() - 0.5;
     }
 
-    fitModel(dataset: { features: number[], target: number }[], iterations: number = 1000, learningStep: number = 0.2): void {
+    fit(dataset: { features: number[], target: number }[], iterations: number = 1000, learningStep: number = 0.2): void {
         for (let cycle = 0; cycle < iterations; cycle++) {
             for (const { features, target } of dataset) {
-                const currentPrediction = this.predict(features);
+                const currentPrediction = this.calculateOutput(features);
                 const loss = target - currentPrediction;
                 
                 for (let i = 0; i < this.weights.length; i++) {
@@ -27,7 +27,7 @@ export class BasicPerceptron {
         }
     }
 
-    predict(features: number[]): number {
+    calculateOutput(features: number[]): number {
         let accumulation = 0;
         for (let i = 0; i < this.weights.length; i++) {
             const currentWeight = this.weights[i];

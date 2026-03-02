@@ -8,10 +8,10 @@ const trainingSet = [
 ];
 
 const perceptron = new BasicPerceptron(2);
-perceptron.fitModel(trainingSet);
+perceptron.fit(trainingSet);
 
 console.log("\nNetwork Evaluation Results");
 for (const { features, target } of trainingSet) {
-    const prediction = perceptron.predict(features);
+    const prediction = perceptron.calculateOutput(features);
     console.log(`Signals: [${features.join(', ')}] > Result: ${prediction.toFixed(4)} (Target: ${target})`);
 }
