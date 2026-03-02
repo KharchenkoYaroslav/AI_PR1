@@ -32,7 +32,7 @@ const scaledInputs = featureMatrix.map(seq => scale(seq, lowerBound, upperBound)
 const scaledTargets = scale(targetVector, lowerBound, upperBound);
 const scaledTestInputs = testFeatures.map(seq => scale(seq, lowerBound, upperBound));
 
-const predictorNetwork = new MultiLayerPerceptron(3, 3, 0.5, 100000);
+const predictorNetwork = new MultiLayerPerceptron(3, 2, 0.5, 100000);
 predictorNetwork.fit(scaledInputs, scaledTargets);
 
 const scaledForecasts = scaledTestInputs.map(seq => predictorNetwork.calculateOutput(seq));
