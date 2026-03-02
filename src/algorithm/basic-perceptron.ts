@@ -15,11 +15,11 @@ export class BasicPerceptron {
                 const currentPrediction = this.predict(features);
                 const loss = target - currentPrediction;
                 
-                for (let idx = 0; idx < this.weights.length; idx++) {
-                    const currentWeight = this.weights[idx];
-                    const currentFeature = features[idx];
+                for (let i = 0; i < this.weights.length; i++) {
+                    const currentWeight = this.weights[i];
+                    const currentFeature = features[i];
                     if (currentWeight !== undefined && currentFeature !== undefined) {
-                        this.weights[idx] = currentWeight + alpha * loss * currentFeature;
+                        this.weights[i] = currentWeight + alpha * loss * currentFeature;
                     }
                 }
                 this.offset += alpha * loss;
@@ -29,9 +29,9 @@ export class BasicPerceptron {
 
     predict(features: number[]): number {
         let accumulation = 0;
-        for (let idx = 0; idx < this.weights.length; idx++) {
-            const currentWeight = this.weights[idx];
-            const currentFeature = features[idx];
+        for (let i = 0; i < this.weights.length; i++) {
+            const currentWeight = this.weights[i];
+            const currentFeature = features[i];
             if (currentWeight !== undefined && currentFeature !== undefined) {
                 accumulation += currentWeight * currentFeature;
             }
